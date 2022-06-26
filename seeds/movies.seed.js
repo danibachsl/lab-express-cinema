@@ -1,3 +1,22 @@
+
+const mongoose = require('mongoose');
+const Book = require('../models/Book.model');
+
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/library-project';
+
+mongoose
+  .connect(MONGO_URI)
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch((err) => {
+    console.error("Error connecting to mongo: ", err);
+  });
+
+// PASTE HERE THE LIST OF BOOKS PROVIDED IN THIS GIST: https://gist.github.com/ironhack-edu/2816267a015d4870f95275cb873d33b6
+
 // To insert in "seeds/movies.seed.js"
 
 const movies = [
@@ -86,3 +105,12 @@ const movies = [
   // Add here the script that will be run to actually seed the database (feel free to refer to the previous lesson)
   
   // ... your code here
+
+Movie.create(movies)
+  .then(booksFromDB => {
+    console.log(`Created ${booksFromDB.length} movies`);
+
+    // Once created, close the DB connection
+    mongoose.connection.close();
+  })
+  .catch(err => console.log(`An error occurred while creating movies from the DB: ${err}`));
