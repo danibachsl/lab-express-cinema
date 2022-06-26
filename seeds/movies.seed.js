@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const Book = require('../models/Book.model');
+const Movie = require('../models/Movie.model');
 
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/library-project';
 
