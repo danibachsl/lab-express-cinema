@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Movie = require('../models/Movie.model');
 
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/library-project';
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/lab-express-cinema';
 
 mongoose
   .connect(MONGO_URI)
@@ -15,7 +15,6 @@ mongoose
     console.error("Error connecting to mongo: ", err);
   });
 
-// PASTE HERE THE LIST OF BOOKS PROVIDED IN THIS GIST: https://gist.github.com/ironhack-edu/2816267a015d4870f95275cb873d33b6
 
 // To insert in "seeds/movies.seed.js"
 
@@ -107,8 +106,8 @@ const movies = [
   // ... your code here
 
 Movie.create(movies)
-  .then(booksFromDB => {
-    console.log(`Created ${booksFromDB.length} movies`);
+  .then(moviesFromDB => {
+    console.log(`Created ${moviesFromDB.length} movies`);
 
     // Once created, close the DB connection
     mongoose.connection.close();
