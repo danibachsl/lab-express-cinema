@@ -1,0 +1,14 @@
+<div>
+
+    <h1>Ironhack Cinema</h1><br>
+    <h3>Click on the movie to check the showtimes!</h3><br><br>
+
+    {{#each response}}
+
+        <img src="{{response.image}}" alt="movie">
+        <h4><b>{{response.title}}</b></h4>
+        <h5><a href="/movie/:id"> See more </a></h5>
+
+    {{/each}}
+
+</div>
