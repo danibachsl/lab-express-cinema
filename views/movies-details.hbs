@@ -1,0 +1,22 @@
+<div>
+    <img src="{{response.image}}" alt="movie">
+    <h5><a href="/movies"> Go Back </a></h5><br><br>
+
+    <b><h3>{{response.title}}</h3></b><br><br>
+
+    <h3>Stars</h3><br><br>
+
+    {{#each response.stars}}
+        <ul>
+            {{ response }}
+        </ul>
+    {{/each}}
+  
+    <br><br>
+    <h3>{{ response.description }}</h3><br><br>
+
+    {{#each response.showtimes}}
+        {{ this }} |
+    {{/each}}
+    
+</div>

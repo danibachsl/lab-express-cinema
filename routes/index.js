@@ -15,14 +15,15 @@ router.get('/movies', (req, res, next) => {
         });
 }); 
 
-router.get('/movie/:id', (req, res, next) => {
+router.get('/movies/:id', (req, res, next) => {
     Movie.findById(req.params.id)
         .then((response) => {
+            console.log(response);
             res.render("movies-details.hbs", { response });
         })
         .catch((err) => {
             next(err)
-        })
+        });
 })
 
 module.exports = router;
